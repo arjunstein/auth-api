@@ -45,4 +45,18 @@ class AuthServiceImplement extends ServiceApi implements AuthService
             'token' => $token,
         ];
     }
+
+    public function login(array $credentials): array
+    {
+        $user = $this->mainRepository->findByEmail($credentials['email']);
+        if (!$user || !Hash::check($credentials['password'], $user->password)) {
+            throw new \Exception('Invalid credentials');
+        }
+
+        $token = JWTAuth::fromUser($user);
+        return [
+            'user' => $user,
+            'token' => $token,
+        ];
+    }
 }
