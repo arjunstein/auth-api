@@ -59,4 +59,23 @@ class AuthServiceImplement extends ServiceApi implements AuthService
             'token' => $token,
         ];
     }
+
+    public function me(): ?object
+    {
+        try {
+            return JWTAuth::parseToken()->authenticate();
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    public function refreshToken(): string
+    {
+        return JWTAuth::parseToken()->refresh();
+    }
+
+    public function logout(): void
+    {
+        JWTAuth::invalidate(JWTAuth::getToken());
+    }
 }
