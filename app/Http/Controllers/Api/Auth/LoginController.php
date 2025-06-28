@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Services\Auth\AuthService;
-use OpenApi\Annotations as OA;
 
 class LoginController extends Controller
 {
@@ -16,35 +15,6 @@ class LoginController extends Controller
         $this->authService = $authService;
     }
 
-    /**
-     * @OA\Post(
-     *     path="/api/v1/login",
-     *     summary="Login user",
-     *     tags={"Authenticate"},
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(
-     *             required={"email","password"},
-     *             @OA\Property(property="email", type="string", example="example@domain.com"),
-     *             @OA\Property(property="password", type="string", example="secret123")
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="OK",
-     *         @OA\MediaType(
-     *             mediaType="application/json"
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=401,
-     *         description="Unauthorized",
-     *         @OA\MediaType(
-     *             mediaType="application/json"
-     *         )
-     *     )
-     * )
-     */
     public function __invoke(LoginRequest $request)
     {
         $token = $this->authService->login($request->validated());
