@@ -45,8 +45,20 @@ class RegisterController extends Controller
      *             )
      *         )
      *     ),
-     *     @OA\Response(response=201, description="Register successful response"),
-     *     @OA\Response(response=422, description="Unprocessable content")
+     *     @OA\Response(
+     *         response=201,
+     *         description="Created",
+     *         @OA\MediaType(
+     *             mediaType="application/json"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Unprocessable content",
+     *         @OA\MediaType(
+     *             mediaType="application/json"
+     *         )
+     *     )
      * )
      */
     public function __invoke(RegisterRequest $request)
@@ -57,7 +69,7 @@ class RegisterController extends Controller
             'status' => 'success',
             'message' => 'Registration successful',
             'data' => $data['user'],
-            'token' => $data['token'],
+            'access_token' => $data['token'],
         ], 201);
     }
 }

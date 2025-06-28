@@ -24,7 +24,7 @@
                                 "properties": {
                                     "email": {
                                         "type": "string",
-                                        "example": "arjun@mail.com"
+                                        "example": "example@domain.com"
                                     },
                                     "password": {
                                         "type": "string",
@@ -38,30 +38,16 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Login successfully",
+                        "description": "OK",
                         "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "access_token": {
-                                            "type": "string"
-                                        },
-                                        "token_type": {
-                                            "type": "string",
-                                            "example": "bearer"
-                                        },
-                                        "expires_in": {
-                                            "type": "integer",
-                                            "example": 3600
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
+                            "application/json": {}
                         }
                     },
                     "401": {
-                        "description": "Unauthorized"
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -230,10 +216,16 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Register successful response"
+                        "description": "Created",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "422": {
-                        "description": "Unprocessable content"
+                        "description": "Unprocessable content",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }

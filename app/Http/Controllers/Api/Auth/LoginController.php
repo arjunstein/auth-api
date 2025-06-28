@@ -25,22 +25,23 @@ class LoginController extends Controller
      *         required=true,
      *         @OA\JsonContent(
      *             required={"email","password"},
-     *             @OA\Property(property="email", type="string", example="arjun@mail.com"),
+     *             @OA\Property(property="email", type="string", example="example@domain.com"),
      *             @OA\Property(property="password", type="string", example="secret123")
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Login successfully",
-     *         @OA\JsonContent(
-     *             @OA\Property(property="access_token", type="string"),
-     *             @OA\Property(property="token_type", type="string", example="bearer"),
-     *             @OA\Property(property="expires_in", type="integer", example=3600)
+     *         description="OK",
+     *         @OA\MediaType(
+     *             mediaType="application/json"
      *         )
      *     ),
      *     @OA\Response(
      *         response=401,
-     *         description="Unauthorized"
+     *         description="Unauthorized",
+     *         @OA\MediaType(
+     *             mediaType="application/json"
+     *         )
      *     )
      * )
      */
@@ -55,7 +56,7 @@ class LoginController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Login successful',
-            'data' => $token,
+            'access_token' => $token,
         ], 200);
     }
 }
