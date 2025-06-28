@@ -38,10 +38,16 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Successful"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "401": {
-                        "description": "Unauthorized"
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }
@@ -210,10 +216,16 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Register successful response"
+                        "description": "Created",
+                        "content": {
+                            "application/json": {}
+                        }
                     },
                     "422": {
-                        "description": "Unprocessable content"
+                        "description": "Unprocessable content",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }

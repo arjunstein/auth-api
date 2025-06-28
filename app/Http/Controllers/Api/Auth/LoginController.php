@@ -31,11 +31,17 @@ class LoginController extends Controller
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Successful",
+     *         description="OK",
+     *         @OA\MediaType(
+     *             mediaType="application/json"
+     *         )
      *     ),
      *     @OA\Response(
      *         response=401,
-     *         description="Unauthorized"
+     *         description="Unauthorized",
+     *         @OA\MediaType(
+     *             mediaType="application/json"
+     *         )
      *     )
      * )
      */
