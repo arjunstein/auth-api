@@ -24,7 +24,7 @@
                                 "properties": {
                                     "email": {
                                         "type": "string",
-                                        "example": "arjun@mail.com"
+                                        "example": "example@domain.com"
                                     },
                                     "password": {
                                         "type": "string",
@@ -38,27 +38,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Login successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "access_token": {
-                                            "type": "string"
-                                        },
-                                        "token_type": {
-                                            "type": "string",
-                                            "example": "bearer"
-                                        },
-                                        "expires_in": {
-                                            "type": "integer",
-                                            "example": 3600
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
+                        "description": "Successful"
                     },
                     "401": {
                         "description": "Unauthorized"
