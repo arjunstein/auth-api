@@ -7,6 +7,7 @@ use App\Services\Auth\AuthService;
 use Illuminate\Support\Facades\Hash;
 use LaravelEasyRepository\ServiceApi;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\JWT;
 
 class AuthServiceImplement extends ServiceApi implements AuthService
 {
@@ -46,18 +47,15 @@ class AuthServiceImplement extends ServiceApi implements AuthService
         ];
     }
 
-    public function login(array $credentials): array
+    public function login(array $credentials): ?string
     {
         $user = $this->mainRepository->findByEmail($credentials['email']);
+
         if (!$user || !Hash::check($credentials['password'], $user->password)) {
-            throw new \Exception('Invalid credentials');
+            return null;
         }
 
-        $token = JWTAuth::fromUser($user);
-        return [
-            'user' => $user,
-            'token' => $token,
-        ];
+        return JWTAuth::fromUser($user);
     }
 
     public function me(): ?object

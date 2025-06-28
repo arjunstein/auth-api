@@ -55,7 +55,7 @@ class LoginController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'Login successful',
-            'data' => $token,
+            'access_token' => $token,
         ], 200);
     }
 }
